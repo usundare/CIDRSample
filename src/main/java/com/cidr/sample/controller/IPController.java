@@ -41,7 +41,10 @@ public class IPController {
 	 		
 	 		int returnValue = repository.updateStatus(ipAddress, "acquired");
 	 		
-	 		return new ResponseEntity<String>("IP address acquired", HttpStatus.OK);
+	 		if(returnValue ==1 )
+	 			return new ResponseEntity<String>("IP address acquired", HttpStatus.OK);
+	 		else
+	 			return new ResponseEntity<String>("IP address not acquired", HttpStatus.OK);
 	 	}
 	 
 	 @PutMapping("/release")
@@ -50,7 +53,10 @@ public class IPController {
 	 		
 	 		int returnValue = repository.updateStatus(ipAddress, "available");
 	 		
-	 		return new ResponseEntity<String>("IP address released", HttpStatus.OK);
+	 		if(returnValue ==1 )
+	 			return new ResponseEntity<String>("IP address released", HttpStatus.OK);
+	 		else
+	 			return new ResponseEntity<String>("IP address not released", HttpStatus.OK);
 	 }
 
 }
